@@ -33,10 +33,10 @@
             this.TB_Carpeta = new System.Windows.Forms.TextBox();
             this.B_Examinar = new System.Windows.Forms.Button();
             this.GV_Archivos = new System.Windows.Forms.DataGridView();
-            this.B_Entrenar = new System.Windows.Forms.Button();
-            this.TB_Ocultas = new System.Windows.Forms.TextBox();
             this.archivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salida = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.B_Entrenar = new System.Windows.Forms.Button();
+            this.TB_Ocultas = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GV_Archivos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,24 +90,6 @@
             this.GV_Archivos.Size = new System.Drawing.Size(302, 239);
             this.GV_Archivos.TabIndex = 4;
             // 
-            // B_Entrenar
-            // 
-            this.B_Entrenar.Location = new System.Drawing.Point(117, 372);
-            this.B_Entrenar.Name = "B_Entrenar";
-            this.B_Entrenar.Size = new System.Drawing.Size(75, 23);
-            this.B_Entrenar.TabIndex = 5;
-            this.B_Entrenar.Text = "Entrenar";
-            this.B_Entrenar.UseVisualStyleBackColor = true;
-            this.B_Entrenar.Click += new System.EventHandler(this.B_Entrenar_Click);
-            // 
-            // TB_Ocultas
-            // 
-            this.TB_Ocultas.Location = new System.Drawing.Point(345, 47);
-            this.TB_Ocultas.Name = "TB_Ocultas";
-            this.TB_Ocultas.Size = new System.Drawing.Size(44, 20);
-            this.TB_Ocultas.TabIndex = 6;
-            this.TB_Ocultas.Text = "10";
-            // 
             // archivo
             // 
             this.archivo.HeaderText = "Archivo";
@@ -128,6 +110,25 @@
             this.salida.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.salida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // B_Entrenar
+            // 
+            this.B_Entrenar.Location = new System.Drawing.Point(117, 372);
+            this.B_Entrenar.Name = "B_Entrenar";
+            this.B_Entrenar.Size = new System.Drawing.Size(75, 23);
+            this.B_Entrenar.TabIndex = 5;
+            this.B_Entrenar.Text = "Entrenar";
+            this.B_Entrenar.UseVisualStyleBackColor = true;
+            this.B_Entrenar.Visible = false;
+            this.B_Entrenar.Click += new System.EventHandler(this.B_Entrenar_Click);
+            // 
+            // TB_Ocultas
+            // 
+            this.TB_Ocultas.Location = new System.Drawing.Point(345, 47);
+            this.TB_Ocultas.Name = "TB_Ocultas";
+            this.TB_Ocultas.Size = new System.Drawing.Size(44, 20);
+            this.TB_Ocultas.TabIndex = 6;
+            this.TB_Ocultas.Text = "10";
+            // 
             // F_Entrenar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,6 +142,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "F_Entrenar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "F_Entrenar";
             ((System.ComponentModel.ISupportInitialize)(this.GV_Archivos)).EndInit();
             this.ResumeLayout(false);
