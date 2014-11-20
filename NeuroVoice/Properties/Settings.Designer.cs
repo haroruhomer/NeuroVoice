@@ -13,7 +13,7 @@ namespace NeuroVoice.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -25,22 +25,38 @@ namespace NeuroVoice.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("holiiia")]
-        public string Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.8")]
+        public double Neuronas {
             get {
-                return ((string)(this["Setting"]));
+                return ((double)(this["Neuronas"]));
             }
             set {
-                this["Setting"] = value;
+                this["Neuronas"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12540")]
-        public decimal Setting1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfAnyType xmlns:xsi=\"http://www.w3" +
+            ".org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <" +
+            "anyType />\r\n  <anyType />\r\n  <anyType />\r\n</ArrayOfAnyType>")]
+        public global::System.Collections.ArrayList Neuro {
             get {
-                return ((decimal)(this["Setting1"]));
+                return ((global::System.Collections.ArrayList)(this["Neuro"]));
+            }
+            set {
+                this["Neuro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Hashtable Setting {
+            get {
+                return ((global::System.Collections.Hashtable)(this["Setting"]));
+            }
+            set {
+                this["Setting"] = value;
             }
         }
     }

@@ -37,6 +37,10 @@
             this.salida = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.B_Entrenar = new System.Windows.Forms.Button();
             this.TB_Ocultas = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.L_RecoOcultas = new System.Windows.Forms.Label();
+            this.TB_Info = new System.Windows.Forms.TextBox();
+            this.B_Evaluar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GV_Archivos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +48,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 9);
+            this.label1.Location = new System.Drawing.Point(137, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(214, 26);
             this.label1.TabIndex = 0;
@@ -53,10 +57,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(27, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Patrones";
             // 
@@ -123,17 +127,64 @@
             // 
             // TB_Ocultas
             // 
-            this.TB_Ocultas.Location = new System.Drawing.Point(345, 47);
+            this.TB_Ocultas.Location = new System.Drawing.Point(434, 124);
             this.TB_Ocultas.Name = "TB_Ocultas";
             this.TB_Ocultas.Size = new System.Drawing.Size(44, 20);
             this.TB_Ocultas.TabIndex = 6;
             this.TB_Ocultas.Text = "10";
+            this.TB_Ocultas.MouseLeave += new System.EventHandler(this.TB_Ocultas_MouseLeave);
+            this.TB_Ocultas.MouseHover += new System.EventHandler(this.TB_Ocultas_MouseHover);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(320, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Neuronas Ocultas";
+            // 
+            // L_RecoOcultas
+            // 
+            this.L_RecoOcultas.AutoSize = true;
+            this.L_RecoOcultas.Location = new System.Drawing.Point(331, 147);
+            this.L_RecoOcultas.Name = "L_RecoOcultas";
+            this.L_RecoOcultas.Size = new System.Drawing.Size(164, 13);
+            this.L_RecoOcultas.TabIndex = 8;
+            this.L_RecoOcultas.Text = "*Recomendado valor por defecto";
+            this.L_RecoOcultas.Visible = false;
+            // 
+            // TB_Info
+            // 
+            this.TB_Info.AcceptsReturn = true;
+            this.TB_Info.Location = new System.Drawing.Point(323, 164);
+            this.TB_Info.Multiline = true;
+            this.TB_Info.Name = "TB_Info";
+            this.TB_Info.ReadOnly = true;
+            this.TB_Info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TB_Info.Size = new System.Drawing.Size(172, 202);
+            this.TB_Info.TabIndex = 4;
+            // 
+            // B_Evaluar
+            // 
+            this.B_Evaluar.Location = new System.Drawing.Point(420, 414);
+            this.B_Evaluar.Name = "B_Evaluar";
+            this.B_Evaluar.Size = new System.Drawing.Size(75, 23);
+            this.B_Evaluar.TabIndex = 9;
+            this.B_Evaluar.Text = "Evaluar";
+            this.B_Evaluar.UseVisualStyleBackColor = true;
+            this.B_Evaluar.Click += new System.EventHandler(this.B_Evaluar_Click);
             // 
             // F_Entrenar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 449);
+            this.ClientSize = new System.Drawing.Size(507, 449);
+            this.Controls.Add(this.B_Evaluar);
+            this.Controls.Add(this.TB_Info);
+            this.Controls.Add(this.L_RecoOcultas);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.TB_Ocultas);
             this.Controls.Add(this.B_Entrenar);
             this.Controls.Add(this.GV_Archivos);
@@ -161,5 +212,9 @@
         private System.Windows.Forms.TextBox TB_Ocultas;
         private System.Windows.Forms.DataGridViewTextBoxColumn archivo;
         private System.Windows.Forms.DataGridViewComboBoxColumn salida;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label L_RecoOcultas;
+        private System.Windows.Forms.TextBox TB_Info;
+        private System.Windows.Forms.Button B_Evaluar;
     }
 }

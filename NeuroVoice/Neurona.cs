@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace NeuroVoice
 {
-    class Neurona
+    public class Neurona
     {
         public double net { get; set; }
         public TipoNeurona tipo { get; set; }
@@ -32,14 +32,27 @@ namespace NeuroVoice
 
         public void CalcularNet(ref double[,] input, int i)
         {
+            net = 0.0;
             for (int j = 0; j < input.GetLength(1); j++)
             {
                 this.net += input[i, j] * pesos[j];
             }
             CalcularSalida();
         }
-        public void CalcularNet(ref Neurona[] hidden)
+
+        public void CalcularNet(double[] input)
         {
+            net = 0.0;
+            for (int j = 0; j < input.GetLength(0); j++)
+            {
+                this.net += input[j] * pesos[j];
+            }
+            CalcularSalida();
+        }
+
+        public void CalcularNet(Neurona[] hidden)
+        {
+            this.net = 0.0;
             for (int j = 0; j < hidden.GetLength(0); j++)
             {
                 this.net += hidden[j].salida * pesos[j];
@@ -50,11 +63,20 @@ namespace NeuroVoice
         private void CalcularSalida()
         {
             salida = (1 / (1 + Math.Pow(Math.E, -net)));
+            //if ((1 / (1 + Math.Pow(Math.E, -net))) > 0.5)
+            //{
+            //    salida = 1;
+            //}
+            //else
+            //{
+            //    salida = 0;
+            //}
+
         }
 
         public void CalcularError(short deseado)
         {
-            this.error=(deseado-salida)*(salida*(1-salida));
+            this.error=((deseado-salida)*salida*(1-salida));
         }
 
         public void CalcularError(ref Neurona[] output, int peso)

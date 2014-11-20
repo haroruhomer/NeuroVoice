@@ -6,7 +6,7 @@
     //  El evento PropertyChanged se desencadena después de cambiar el valor de configuración.
     //  El evento SettingsLoaded se desencadena después de cargar los valores de configuración.
     //  El evento SettingsSaving se desencadena antes de guardar los valores de configuración.
-    internal sealed partial class Settings {
+    public sealed partial class Settings {
         
         public Settings() {
             // // Para agregar los controladores de eventos para guardar y cambiar la configuración, quite la marca de comentario de las líneas:
@@ -23,6 +23,7 @@
         
         private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
             // Agregar código para administrar aquí el evento SettingsSaving.
+           
         }
     }
 }

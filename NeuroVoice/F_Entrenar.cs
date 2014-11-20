@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data;
 using System.Windows.Forms;
 
@@ -7,6 +8,8 @@ namespace NeuroVoice
 {
     public partial class F_Entrenar : Form
     {
+        Neurona[] hidden, output;
+
         public F_Entrenar()
         {
             InitializeComponent();
@@ -46,6 +49,7 @@ namespace NeuroVoice
 
         private void B_Entrenar_Click(object sender, EventArgs e)
         {
+            double errora = 0;
             MLApp.MLApp matlab = new MLApp.MLApp();
             matlab.Visible = 0;
             matlab.Execute(@"cd " + Application.StartupPath);
@@ -54,7 +58,7 @@ namespace NeuroVoice
             Double[,] aux;
             int index = 0;
             Random rndm = new Random();
-            double alfa = 0.8,beta=0.8;
+            double alfa = 0.2,beta=0.8;
             
 
             foreach (DataGridViewRow fila in GV_Archivos.Rows)
@@ -64,7 +68,6 @@ namespace NeuroVoice
                 object valores = null;
                 matlab.Feval("fftaudio", 1, out valores, archivo);
                 object[] val = valores as object[];
-                Console.Out.WriteLine(val[0]);
                 aux = (double[,])val[0];
                 for (int i = 0; i < 16; i++)
                 {
@@ -105,7 +108,7 @@ namespace NeuroVoice
                 index++;
 
             }
-
+            matlab.Visible = 1;
             matlab.Quit();
 
             int[] sred = new int[3];//Estructura de red
@@ -128,7 +131,7 @@ namespace NeuroVoice
                 output[k].InicializarPesos(rndm);
             }
 
-            int MaxIte = 500000;
+            int MaxIte = 2000;
             int ite = 0;
             int numPatron = 0;
 
@@ -141,7 +144,7 @@ namespace NeuroVoice
                 //
                 for (int j = 0; j < output.GetLength(0); j++)
                 {
-                    output[j].CalcularNet(ref hidden);
+                    output[j].CalcularNet(hidden);
                 }
 
                 for (int k = 0; k< output.GetLength(0); k++)
@@ -154,24 +157,57 @@ namespace NeuroVoice
                     hidden[l].CalcularError(ref output,l);
                     hidden[l].ActualizaPesos(alfa, beta, ref input, numPatron);
                 }
-    double errorG=0.0;
-        for(int eg=0;eg<output.GetLength(0);eg++)
-        {
-            errorG+=Math.Pow(output[eg].error,2);
-        }
-        errorG *= 0.5;
-        if (errorG < 0.000000001)
-        {
-            Console.Out.WriteLine("Salida1-"+output[0].salida+"-Salida2-"+output[1].salida+"-Salida3-"+output[2].salida);
-            numPatron++;
-        }
-        ite++;
-                //if (numPatron >= input.GetLength(0))
-                //    numPatron = 0;
-                Console.Out.WriteLine("Patron-" + numPatron + "-iteracion-" + ite);
-                
+                double errorG=0.0;
+                    for(int eg=0;eg<output.GetLength(0);eg++)
+                    {
+                        errorG+=Math.Pow(output[eg].error,2);
+                    }
+                    errorG *= 0.5;
+                  
+                    if (errorG == errora)
+                        
+                    {
+                        TB_Info.AppendText("\nPatron-" + numPatron + "-iteracion-" + ite + "\n");
+                        TB_Info.AppendText("\tSalida1-" + output[0].salida + "\r\n" + "\t-Salida2-" + output[1].salida + "\r\n" + "\t-Salida3-" + output[2].salida + "\n" + "\n");
+                        numPatron++;
+                    }
+                    //Console.Out.WriteLine("\nPatron-" + numPatron + "-iteracion-" + ite + "\n");
+                    //Console.Out.WriteLine("\tSalida1-" + output[0].salida + "\r\n" + "\t-Salida2-" + output[1].salida + "\r\n" + "\t-Salida3-" + output[2].salida + "\n" + "\n");
+                    //numPatron++;
+                    //if (numPatron >= input.GetLength(0))
+                    //    numPatron = 0;
+
+                    
+                    errora = errorG;
+                    ite++;                
             }
+            this.hidden = hidden;
+            this.output = output;
+            ArrayList al=new ArrayList();
+            al.Add((object)hidden);
+            al.Add((object)output);
+            Properties.Settings.Default.Neuro = al;
+            Properties.Settings.Default.Neuronas = 0.4;
+            Properties.Settings.Default.Save();
              Console.Out.WriteLine("Fin");
+        }
+
+        private void TB_Ocultas_MouseHover(object sender, EventArgs e)
+        {
+            L_RecoOcultas.Visible = true;
+        }
+
+        private void TB_Ocultas_MouseLeave(object sender, EventArgs e)
+        {
+            L_RecoOcultas.Visible = false;
+        }
+
+        private void B_Evaluar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            F_Evaluar fEvaluar = new F_Evaluar(hidden, output);
+            fEvaluar.Show(this);
+            this.Show();
         }
     }
 }

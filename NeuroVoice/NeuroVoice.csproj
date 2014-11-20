@@ -35,7 +35,6 @@
     <Reference Include="Exocortex.DSP">
       <HintPath>C:\Users\haroldhomero\Downloads\ExocortexDSP_v1.2\bin\Release\Exocortex.DSP.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.SilverlightPlatform, Version=5.0.30709.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
     <Reference Include="NAudio">
       <HintPath>C:\Users\haroldhomero\Downloads\Naudio\NAudio.dll</HintPath>
     </Reference>
@@ -96,7 +95,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
